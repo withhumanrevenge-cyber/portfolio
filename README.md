@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Monu | Interactive Frontend Portfolio
 
-## Getting Started
+A high-performance, cinematic, and motion-driven developer portfolio engineered with **Next.js 15**, **React 19**, and the latest web technologies. This project showcases the intersection of high-end design principles and robust frontend engineering.
 
-First, run the development server:
+## 🚀 Technical Highlights
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework**: Next.js 15 (App Router)
+- **Runtime**: React 19
+- **Animations**: GSAP (GreenSock) & Framer Motion
+- **Styling**: Tailwind CSS & Vanilla CSS
+- **Icons**: Lucide React
+- **Themes**: Next Themes (Dark/Light mode support)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💎 Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Interactive Hero**: Parallax background with cursor-following particles and a depth-driven character display.
+- **Glassmorphism UI**: Modern, translucent interface components built for high-end visual fidelity.
+- **Dynamic Projects Gallery**: Interactive bento-style grid with list/grid view switching and tilt effects.
+- **Strategic About Section**: Highlighting core engineering philosophies: Performance, Motion, and Scalability.
+- **Smooth Transitions**: Global page and component level animations for a seamless user journey.
+- **Fully Responsive**: Optimized for every screen size from mobile to ultrawide displays.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18+ 
+- npm / yarn / pnpm
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/withhumanrevenge-cyber/portfolio.git
+   cd portfolio
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📬 Contact
+
+- **Email**: monuraj88703@gmail.com
+- **LinkedIn**: [Monu](https://www.linkedin.com/in/monu-b92047282)
+- **GitHub**: [@withhumanrevenge-cyber](https://github.com/withhumanrevenge-cyber)
+
+---
+*Built with ❤️ for High-End Digital Experiences.*
