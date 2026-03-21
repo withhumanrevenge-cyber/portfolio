@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-glow: var(--accent-glow);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+
+  --font-inter: var(--font-inter);
+  --font-outfit: var(--font-outfit);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+:root {
+  --background: #fdfdfd;
+  --foreground: #101010;
+  --accent: #ff4d00;
+  --accent-glow: rgba(255, 77, 0, 0.4);
+  --secondary: #f0f0f0;
+  --muted: #666666;
+  --glass: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --mesh-1: hsla(253, 16%, 95%, 1);
+  --mesh-2: hsla(225, 39%, 90%, 1);
+  --mesh-3: hsla(339, 49%, 90%, 1);
+}
+
+.dark {
+  --background: #050505;
+  --foreground: #f0f0f0;
+  --secondary: #1a1a1a;
+  --muted: #888888;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --mesh-1: hsla(253, 16%, 7%, 1);
+  --mesh-2: hsla(225, 39%, 20%, 1);
+  --mesh-3: hsla(339, 49%, 20%, 1);
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-500 bg-background text-foreground;
+    font-family: var(--font-inter), ui-sans-serif, system-ui;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+
+  /* Custom Cursor Styles */
+  .custom-cursor {
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.15s ease-out;
+  }
+
+  /* Mesh Gradient Background */
+  .mesh-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      radial-gradient(at 0% 0%, var(--mesh-1) 0, transparent 50%),
+      radial-gradient(at 50% 0%, var(--mesh-2) 0, transparent 50%),
+      radial-gradient(at 100% 0%, var(--mesh-3) 0, transparent 50%);
+    filter: blur(80px);
+    opacity: 0.4;
+  }
+
+  /* Glass Card */
+  .glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 77, 0, 0.05);
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px var(--accent-glow);
+  }
+
+  /* Animatic Text Reveal */
+  .text-reveal {
+    overflow: hidden;
+  }
+
+  .text-reveal span {
+    display: block;
+  }
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Base Utility for full-screen fixed backgrounds */
+.fixed-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
