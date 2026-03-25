@@ -15,34 +15,15 @@ const Footer = () => {
                     <div className="text-2xl font-outfit font-black tracking-tighter mb-4">
                         MY <span className="text-accent italic">PORTFOLIO</span>
                     </div>
-                    <p className="text-muted max-w-sm mb-8">
-                        A passionate fresh graduate bridging the gap between artistic design and logical development.
-                        Specializing in interactive frontend development and high-performance solutions.
+                    <p className="text-foreground/70 max-w-sm mb-8 font-light">
+                        Focused on high-fidelity interfaces and performance-first logic. 
+                        Engineering the React ecosystem with a focus on motion and scalability.
                     </p>
-                    <div className="flex gap-4">
-                        {[
-                            { Icon: Github, href: "https://github.com/withhumanrevenge-cyber", label: "GitHub" },
-                            { Icon: Linkedin, href: "https://www.linkedin.com/in/monu-b92047282", label: "LinkedIn" },
-                            { Icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-                            { Icon: Instagram, href: "https://instagram.com", label: "Instagram" }
-                        ].map(({ Icon, href, label }) => (
-                            <a 
-                                key={label} 
-                                href={href} 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={label}
-                                className="w-10 h-10 glass-card flex items-center justify-center rounded-full hover:bg-accent hover:text-white transition-all interactive"
-                            >
-                                <Icon size={18} />
-                            </a>
-                        ))}
-                    </div>
                 </div>
 
                 <div>
                     <h5 className="font-bold mb-6">Explore</h5>
-                    <ul className="flex flex-col gap-3 text-muted">
+                    <ul className="flex flex-col gap-3 text-foreground/70">
                         {["Work", "About", "Contact"].map((item) => (
                             <li key={item}>
                                 <a href={`#${item.toLowerCase()}`} className="hover:text-accent transition-colors">{item}</a>

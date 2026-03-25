@@ -21,6 +21,7 @@
   --background: #fdfdfd;
   --foreground: #101010;
   --accent: #ff4d00;
+  --accent-rgb: 255, 77, 0;
   --accent-glow: rgba(255, 77, 0, 0.4);
   --secondary: #f0f0f0;
   --muted: #666666;
@@ -29,18 +30,6 @@
   --mesh-1: hsla(253, 16%, 95%, 1);
   --mesh-2: hsla(225, 39%, 90%, 1);
   --mesh-3: hsla(339, 49%, 90%, 1);
-}
-
-.dark {
-  --background: #050505;
-  --foreground: #f0f0f0;
-  --secondary: #1a1a1a;
-  --muted: #888888;
-  --glass: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --mesh-1: hsla(253, 16%, 7%, 1);
-  --mesh-2: hsla(225, 39%, 20%, 1);
-  --mesh-3: hsla(339, 49%, 20%, 1);
 }
 
 @layer base {

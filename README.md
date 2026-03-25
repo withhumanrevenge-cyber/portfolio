@@ -1,55 +1,54 @@
-# Monu | Interactive Frontend Portfolio
+# Monu | Engineering Portfolio
 
-A high-performance, cinematic, and motion-driven developer portfolio engineered with **Next.js 15**, **React 19**, and the latest web technologies. This project showcases the intersection of high-end design principles and robust frontend engineering.
+A high-performance developer portfolio focused on motion engineering and technical density. This project demonstrates high-fidelity UI logic, resilient frontend architecture, and the intersection of design and complex logic.
 
-## 🚀 Technical Highlights
+## 🛠️ Stack Architecture
 
-- **Framework**: Next.js 15 (App Router)
-- **Runtime**: React 19
-- **Animations**: GSAP (GreenSock) & Framer Motion
-- **Styling**: Tailwind CSS & Vanilla CSS
+- **Core**: Next.js 15 (App Router) / React 19
+- **Motion**: Framer Motion & GSAP (Physics-based gestures)
+- **Styling**: Tailwind CSS & Modern CSS Primitives
+- **Graphics**: WebGL / Three.js (via Fragments project)
 - **Icons**: Lucide React
-- **Themes**: Next Themes (Dark/Light mode support)
+- **Logic**: TypeScript (Strict typing for safety)
 
-## 💎 Features
+## 💎 Feature Modules
 
-- **Interactive Hero**: Parallax background with cursor-following particles and a depth-driven character display.
-- **Glassmorphism UI**: Modern, translucent interface components built for high-end visual fidelity.
-- **Dynamic Projects Gallery**: Interactive bento-style grid with list/grid view switching and tilt effects.
-- **Strategic About Section**: Highlighting core engineering philosophies: Performance, Motion, and Scalability.
-- **Smooth Transitions**: Global page and component level animations for a seamless user journey.
-- **Fully Responsive**: Optimized for every screen size from mobile to ultrawide displays.
+- **Immersive Hero Engine**: Fixed-perspective parallax with depth-driven character rendering and gesture-responsive elements.
+- **Project Case Studies**: Full-screen immersive modals providing deep-dives into technical hurdles like "sub-millisecond sync" and "distributed system visualizers."
+- **Capability Matrix**: A real-time floating UI monitoring technical proficiency and performance metrics.
+- **Architectural Minimalism**: Clean, focus-driven typography using Hanken Grotesk and Instrument Sans.
+- **Resilient Layout**: Fully liquid design that maintains technical density from mobile to 4K displays.
 
-## 🛠️ Getting Started
+## 🚀 Development Workflow
 
 ### Prerequisites
 
 - Node.js 18+ 
 - npm / yarn / pnpm
 
-### Installation
+### Setup
 
-1. **Clone the repository:**
+1. **Clone the repo:**
    ```bash
    git clone https://github.com/withhumanrevenge-cyber/portfolio.git
    cd portfolio
    ```
 
-2. **Install dependencies:**
+2. **Install deps:**
    ```bash
    npm install
    ```
 
-3. **Start the development server:**
+3. **Run dev server:**
    ```bash
    npm run dev
    ```
 
 ## 📬 Contact
 
-- **Email**: monuraj88703@gmail.com
+- **Gmail**: monuraj88703@gmail.com
 - **LinkedIn**: [Monu](https://www.linkedin.com/in/monu-b92047282)
 - **GitHub**: [@withhumanrevenge-cyber](https://github.com/withhumanrevenge-cyber)
 
 ---
-*Built with ❤️ for High-End Digital Experiences.*
+*Built for Performance and Resiliency.*

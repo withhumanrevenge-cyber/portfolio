@@ -18,11 +18,9 @@ const InteractiveHeroBackground = () => {
             const { clientX, clientY } = e;
             const { innerWidth, innerHeight } = window;
 
-            // Calculate offset from center (normalized -0.5 to 0.5)
             const xPos = (clientX / innerWidth) - 0.5;
             const yPos = (clientY / innerHeight) - 0.5;
 
-            // Subtle parallax movement
             gsap.to(image, {
                 x: xPos * 50,
                 y: yPos * 50,
@@ -35,7 +33,6 @@ const InteractiveHeroBackground = () => {
 
         window.addEventListener("mousemove", handleMouseMove);
 
-        // Breathing/Floating animation
         gsap.to(image, {
             y: "+=20",
             duration: 3,
@@ -56,22 +53,23 @@ const InteractiveHeroBackground = () => {
         >
             <div
                 ref={imageRef}
-                className="absolute inset-0 flex items-center justify-center opacity-80"
+                className="absolute inset-0 flex items-center justify-center opacity-40 sm:opacity-70 group"
                 style={{ transformStyle: "preserve-3d" }}
             >
-                <div className="relative w-full h-[80vh]">
-                    <Image
-                        src="/hero.png.png"
-                        alt="Hero Character"
-                        fill
-                        priority
-                        className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] dark:drop-shadow-[0_20px_50px_rgba(255,255,255,0.1)]"
-                    />
+                <div className="relative w-full h-[50vh] sm:h-[80vh] flex items-center justify-center">
+                    <div className="relative w-full h-full max-w-[90vw] sm:max-w-7xl mx-auto flex items-center justify-center">
+                        <Image
+                            src="/hero.png.png"
+                            alt="Hero Character"
+                            fill
+                            priority
+                            className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] dark:drop-shadow-[0_20px_50px_rgba(255,255,255,0.1)]"
+                        />
+                    </div>
                 </div>
             </div>
 
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] pointer-events-none" />
-
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/20 opacity-40 pointer-events-none" />
         </div>
     );
