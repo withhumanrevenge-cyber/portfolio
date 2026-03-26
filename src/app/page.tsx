@@ -7,64 +7,89 @@ import PageTransition from "@/components/PageTransition";
 import TiltCard from "@/components/TiltCard";
 import Footer from "@/components/Footer";
 import ProjectModal from "@/components/ProjectModal";
+import DocumentationModal from "@/components/DocumentationModal";
 
 import Image from "next/image";
 
-const projects = [
+import { fetchGitHubProjects, Project } from "@/lib/github";
+
+const staticProjects: Project[] = [
   {
     id: 4,
     title: "PulseBoard",
-    category: "Next.js / TypeScript / Framer Motion",
+    category: "Next.js / TypeScript / WebSockets",
     image: "/pulseboard_highlight.png",
-    color: "from-zinc-900/30 to-slate-500/30",
+    color: "from-zinc-900/40 to-slate-500/40",
     href: "https://pulseboard-wheat.vercel.app/",
     github: "https://github.com/withhumanrevenge-cyber",
-    description: "PulseBoard is a real-time developer reputation engine. I built it to solve the problem of manual work verification. It syncs with your code history in real-time, so your technical mastery is always up-to-date and cryptographically signed.",
-    challenge: "My biggest hurdle was the sub-millisecond synchronization. I had to ensure the reputation engine could handle high-frequency commit data without any lag on the client side.",
-    features: ["Live reputation scoring", "Verified identity protocol", "Searchable talent directory", "Edge-deployed Access Console"],
-    tech: ["Next.js", "Edge Computing", "Clerk Auth", "Real-time WebSockets"]
+    description: "Real-time reputation engine for automated work verification. Implements deep integration with GitHub SCM to generate cryptographically signed technical mastery scores.",
+    challenge: "Engineered sub-millisecond synchronization between commit streams and reputation scoring without blocking the main thread or introducing UI lag.",
+    features: ["Real-time scoring engine", "Verified identity protocol", "Talent indexing system", "Edge-optimized console"],
+    tech: ["Next.js 15", "Edge Runtime", "Clerk", "WebSockets"]
   },
   {
     id: 1,
     title: "Interactive Playground",
     category: "TypeScript / Canvas / GSAP",
     image: "/playground_highlight.png",
-    color: "from-blue-600/30 to-purple-600/30",
+    color: "from-blue-600/40 to-purple-600/40",
     href: "https://interactiveplayground0fmine.vercel.app/",
-    description: "This project is my personal lab for high-fidelity UI engineering. It's a collection of micro-interactions that focus on how an interface should *feel* when you touch or click it. No shortcuts, just pure physics and motion logic.",
-    challenge: "The hardest part was making the state transitions feel fluid. I spent a lot of time on the physics-based drag-resistance and the morphing logic between loading and success states.",
-    features: ["Physics-based gesture handling", "Complex state morphing", "SVG-driven animation DNA", "Theme-synced motion primitives"],
-    tech: ["Framer Motion", "GSAP", "Tailwind CSS", "React Engine"]
+    description: "High-fidelity UI engineering laboratory focused on physics-based motion primitives and complex gesture handling. Zero-abstraction approach to interaction design.",
+    challenge: "Implementation of fluid state morphing logic combined with physics-informed drag resistance for organic interface feedback.",
+    features: ["Physics-informed gestures", "Complex state morphing", "SVG animation engine", "Motion primitives"],
+    tech: ["Framer Motion", "GSAP", "Tailwind CSS", "Canvas API"]
   },
   {
     id: 2,
     title: "Kasper Infotech Redesign",
-    category: "React / HTML5 / CSS3",
+    category: "React / Architecture / Performance",
     image: "/kasper_highlight.png",
-    color: "from-orange-600/30 to-red-600/30",
+    color: "from-orange-600/40 to-red-600/40",
     href: "https://redesignofkasperinfotech.vercel.app/",
-    description: "A full architectural redesign for a high-end software agency. I wanted to move away from generic corporate templates and create something that reflected their focus on complex, distributed systems and infrastructure resilience.",
-    challenge: "Balancing technical density with a minimalist aesthetic. I had to communicate the idea of 'high-concurrency software' using only clean typography and layout hierarchy.",
-    features: ["Engineering-focused layout", "Distributed system visualizers", "Scaling metrics narrative", "Resilient component architecture"],
-    tech: ["Next.js App Router", "Framer Motion", "Minimalist CSS Primitives", "Vercel"]
+    description: "Architectural overhaul for a software agency, shifting from legacy templates to a custom, performance-first system designed for infrastructure-heavy narratives.",
+    challenge: "Optimizing layout hierarchy and typographic density while maintaining a minimalist aesthetic in a content-heavy environment.",
+    features: ["Performance-first layout", "System visualizers", "Scaling narratives", "Resilient components"],
+    tech: ["Next.js App Router", "Framer Motion", "Vercel SDK", "CSS Primitives"]
   },
   {
     id: 3,
     title: "My Skills",
-    category: "Tech Stack / Core Expertise",
+    category: "WebGL / Three.js / React Fiber",
     image: "/myskills_highlight.png",
-    color: "from-emerald-600/30 to-teal-600/30",
+    color: "from-emerald-600/40 to-teal-600/40",
     href: "https://myskills-topaz.vercel.app/",
-    description: "Fragments is an immersive scrollytelling experiment. It's a journey through my technical engine, where I use WebGL to render complex 3D objects as you scroll. It's a showcase of how 3D can coexist with a fast, modern web app.",
-    challenge: "Isolating the heavy 3D logic. I had to ensure the Three.js fragments didn't block the main thread, keeping the scrolling experience buttery smooth while pushing millions of vertices.",
-    features: ["Raw WebGL Scrollytelling", "Isolated 3D Fragments", "Physics-informed Motion DNA", "Performance-first Rendering"],
-    tech: ["Three.js", "WebGL", "React Three Fiber", "Motion Engine"]
+    description: "Immersive WebGL experiment leveraging 3D fragments for technical storytelling. Focuses on bridging High-RPS web architectures with heavy GPU-accelerated rendering.",
+    challenge: "Isolation of expensive 3D logic to prevent main-thread blocking during high-velocity scrolling interactions.",
+    features: ["Raw WebGL rendering", "Isolated 3D fragments", "Physics-informed motion", "GPU-first pipeline"],
+    tech: ["Three.js", "React Three Fiber", "WebGL", "Motion Engine"]
   }
 ];
 
 export default function Home() {
   const [viewMode, setViewMode] = React.useState<"grid" | "list">("list");
-  const [selectedProject, setSelectedProject] = React.useState<typeof projects[0] | null>(null);
+  const [projects, setProjects] = React.useState<Project[]>(staticProjects);
+  const [ghProjects, setGhProjects] = React.useState<Project[]>([]);
+  const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
+  const [isDocsOpen, setIsDocsOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    (async () => {
+      try {
+        const ghProjects = await fetchGitHubProjects();
+        if (ghProjects.length > 0) {
+          const uniqueGh = ghProjects.filter(gh => 
+            !staticProjects.some(st => st.title.toLowerCase() === gh.title.toLowerCase())
+          );
+          setProjects([...staticProjects, ...uniqueGh]);
+        }
+      } catch (err) {
+        console.error("Sync Error:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
 
   return (
     <PageTransition>
@@ -80,14 +105,26 @@ export default function Home() {
           </motion.h2>
         </div>
         <nav className="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-50">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-outfit font-black tracking-tighter glass-card px-8 py-3 border-white/10 dark:border-white/5 bg-white/5 backdrop-blur-md shadow-2xl relative overflow-hidden group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-            MY <span className="text-accent italic">PORTFOLIO</span>
-          </motion.div>
+          <div className="flex items-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-2xl font-outfit font-black tracking-tighter glass-card px-8 py-3 border-white/10 dark:border-white/5 bg-white/5 backdrop-blur-md shadow-2xl relative overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              MY <span className="text-accent italic">PORTFOLIO</span>
+            </motion.div>
+
+            <motion.button
+              onClick={() => setIsDocsOpen(true)}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="px-6 py-3 rounded-full border border-black/5 bg-white/40 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all interactive"
+            >
+              Documentation
+            </motion.button>
+          </div>
           <div className="flex items-center gap-6">
             <div className="hidden lg:flex items-center gap-4 mr-4 border-r border-black/10 pr-6 h-6">
               {[
@@ -156,13 +193,13 @@ export default function Home() {
               </h3>
               <div className="space-y-6 text-lg text-muted font-light leading-relaxed">
                 <p>
-                  As an <span className="text-foreground font-semibold">Interactive Frontend Developer</span>, I don't just build websites; I engineer experiences that bridge the gap between high-end design and high-performance logic. My journey began with an obsession for how things move and feel on the web.
+                  As an <span className="text-foreground font-semibold">Interactive Frontend Engineer</span>, I specialize in bridging high-fidelity design with scalable, high-performance logic. My architecture focuses on the intersection of motion engineering and technical density.
                 </p>
                 <p>
-                  I specialize in the <span className="text-foreground font-semibold">React ecosystem</span>, leveraging <span className="text-foreground font-semibold">Next.js</span> for speed, <span className="text-foreground font-semibold">TypeScript</span> for safety, and <span className="text-foreground font-semibold">GSAP/Framer Motion</span> for fluid story-telling.
+                  I leverage the <span className="text-foreground font-semibold">React ecosystem</span>, utilizing <span className="text-foreground font-semibold">Next.js</span> for optimized delivery, <span className="text-foreground font-semibold">TypeScript</span> for structural safety, and <span className="text-foreground font-semibold">GSAP/Framer Motion</span> for physics-based storytelling.
                 </p>
                 <p>
-                  For me, every pixel is an opportunity for interaction, and every line of code is a commitment to performance and scalability. I am dedicated to pushing the boundaries of what is possible within a browser.
+                  Every implementation is driven by performance benchmarks and interaction benchmarks. I'm dedicated to pushing the technical boundaries of what can be rendered and interacted with in a modern browser environment.
                 </p>
               </div>
 
@@ -181,8 +218,8 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
-                  title: "Performance First",
-                  desc: "Sub-second load times and optimized Core Web Vitals are not optional; they are the foundation.",
+                  title: "Performance",
+                  desc: "Sub-second delivery and optimized Core Web Vitals. Performance is the core architectural foundation.",
                   icon: "Zap"
                 },
                 {
@@ -241,7 +278,8 @@ export default function Home() {
 
           <div className={`grid gap-8 relative z-[2] transition-all duration-700 ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"}`}>
             {projects.map((project, index) => (
-              <div 
+              <motion.div 
+                layoutId={`card-${project.id}`}
                 key={project.id} 
                 className="block cursor-pointer"
                 onClick={() => setSelectedProject(project)}
@@ -257,14 +295,16 @@ export default function Home() {
                     <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
 
                     <div className={viewMode === "list" ? "w-full md:w-[45%] h-64 md:min-h-[300px] overflow-hidden relative" : "absolute inset-0 w-full h-full"}>
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        priority
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
-                      />
+                      <motion.div layoutId={`image-${project.id}`} className="absolute inset-0 w-full h-full">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          priority
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
+                        />
+                      </motion.div>
                     </div>
 
                     <div className={`${viewMode === "grid" ? "absolute inset-0 pointer-events-none" : "relative flex-1 p-8 md:p-12 flex flex-col justify-center"}`}>
@@ -273,7 +313,7 @@ export default function Home() {
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-0">
                           <div>
                             <span className="text-[10px] md:text-xs uppercase tracking-widest text-accent font-bold mb-1 md:mb-2 block">{project.category}</span>
-                            <h4 className={`${viewMode === "grid" ? "text-2xl md:text-3xl" : "text-3xl md:text-5xl"} font-outfit font-bold`}>{project.title}</h4>
+                            <motion.h4 layoutId={`title-${project.id}`} className={`${viewMode === "grid" ? "text-2xl md:text-3xl" : "text-3xl md:text-5xl"} font-outfit font-bold`}>{project.title}</motion.h4>
                           </div>
                           <div className="w-10 h-10 md:w-14 md:h-14 bg-accent/10 md:bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-accent/20 md:border-white/20 md:-translate-y-4 md:opacity-40 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 interactive">
                             <ArrowRight className="-rotate-45" size={18} />
@@ -282,8 +322,14 @@ export default function Home() {
                     </div>
                   </motion.div>
                 </TiltCard>
-              </div>
+              </motion.div>
             ))}
+            {isLoading && (
+              <div className="col-span-full py-20 flex flex-col items-center justify-center gap-4 text-muted">
+                <div className="w-12 h-12 border-4 border-accent/20 border-t-accent rounded-full animate-spin" />
+                <p className="font-outfit text-sm tracking-widest uppercase">Fetching GitHub repositories...</p>
+              </div>
+            )}
           </div>
         </section>
 
@@ -368,6 +414,11 @@ export default function Home() {
       <ProjectModal 
         project={selectedProject} 
         onClose={() => setSelectedProject(null)} 
+      />
+
+      <DocumentationModal 
+        isOpen={isDocsOpen}
+        onClose={() => setIsDocsOpen(false)}
       />
     </PageTransition>
   );

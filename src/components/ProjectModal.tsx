@@ -7,7 +7,7 @@ import Image from "next/image";
 
 interface ProjectModalProps {
   project: {
-    id: number;
+    id: number | string;
     title: string;
     category: string;
     image: string;
@@ -27,119 +27,100 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10"
-      >
-        <div 
-          className="absolute inset-0 bg-white/40 backdrop-blur-[20px] cursor-pointer"
-          onClick={onClose}
-        />
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 30 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 30 }}
-          transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-6xl h-[90vh] bg-white border border-black/5 rounded-[40px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col md:flex-row"
-        >
-          <button 
+      {project && (
+        <div className="fixed inset-0 z-[100] pointer-events-none overflow-y-auto custom-scrollbar flex items-start justify-center pt-24 pb-24">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/5 backdrop-blur-[5px] cursor-pointer pointer-events-auto"
             onClick={onClose}
-            className="absolute top-6 right-6 z-50 w-12 h-12 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors group"
+          />
+
+          {/* The layoutId expansion will handle the "pop-up on the project" feel */}
+          <motion.div
+            layoutId={`card-${project.id}`}
+            className="relative w-full max-w-2xl bg-white border border-black/5 rounded-[40px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col pointer-events-auto z-[101] my-auto"
           >
-            <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
-          </button>
+            <div className="p-8 border-b border-black/5 flex justify-between items-center bg-white sticky top-0 z-[102]">
+               <div className="flex flex-col text-left">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-accent font-black mb-1">{project.category}</span>
+                  <motion.h2 layoutId={`title-${project.id}`} className="text-xl font-outfit font-black tracking-tighter">{project.title}</motion.h2>
+               </div>
+               <button 
+                  onClick={onClose}
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors group"
+               >
+                  <X size={18} className="group-hover:rotate-90 transition-transform duration-300" />
+               </button>
+            </div>
 
-          <div className="w-full md:w-1/2 h-1/3 md:h-full relative overflow-hidden bg-zinc-50 border-r border-black/5">
-            <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20`} />
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover md:object-contain p-4 md:p-12 scale-105"
-            />
-          </div>
+            <div className="flex-1 p-8 text-left">
+              <div className="rounded-[30px] overflow-hidden bg-zinc-50 border border-black/5 mb-10 relative aspect-[16/10]">
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20`} />
+                <motion.div layoutId={`image-${project.id}`} className="absolute inset-0">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    priority
+                    className="object-cover md:object-contain p-6"
+                  />
+                </motion.div>
+              </div>
 
-          <div className="w-full md:w-1/2 h-2/3 md:h-full flex flex-col p-8 md:p-16 overflow-y-auto custom-scrollbar">
-            <div className="mb-10">
-              <span className="text-[10px] uppercase tracking-[0.3em] text-accent font-black mb-2 block">{project.category}</span>
-              <h2 className="text-4xl md:text-6xl font-outfit font-black tracking-tighter mb-4">{project.title}</h2>
-              <div className="flex gap-4 items-center">
+              <div className="flex gap-4 items-center mb-12">
                 <a 
                   href={project.href} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="px-6 py-2.5 bg-black text-white rounded-full text-xs font-bold flex items-center gap-2 hover:bg-accent transition-colors"
+                  className="flex-1 py-4 bg-black text-white rounded-[18px] text-[10px] uppercase tracking-widest font-bold flex items-center justify-center gap-2 hover:bg-accent transition-all active:scale-95"
                 >
-                  See it live <ExternalLink size={14} />
+                  Protocol Link <ExternalLink size={14} />
                 </a>
-                {project.github && (
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="p-2.5 border border-black/10 rounded-full hover:border-black transition-colors"
-                  >
-                    <Github size={18} />
-                  </a>
-                )}
+              </div>
+
+              <div className="space-y-12">
+                <section>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Cpu size={16} className="text-accent" />
+                    <h4 className="text-[10px] uppercase tracking-[0.2em] font-black text-black/30">Executive Summary</h4>
+                  </div>
+                  <p className="text-zinc-500 font-light leading-relaxed text-base">
+                    {project.description}
+                  </p>
+                </section>
+
+                <section>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Zap size={16} className="text-accent" />
+                    <h4 className="text-[10px] uppercase tracking-[0.2em] font-black text-black/30">Strategic Hurdles</h4>
+                  </div>
+                  <div className="p-8 bg-zinc-50/50 border border-black/5 rounded-[30px] border-l-accent border-l-2">
+                    <p className="text-zinc-500 font-light leading-relaxed italic text-sm">
+                      "{project.challenge}"
+                    </p>
+                  </div>
+                </section>
+
+                <section className="pb-8">
+                  <div className="flex items-center gap-2 mb-4">
+                     <Lock size={16} className="text-accent" />
+                     <h4 className="text-[10px] uppercase tracking-[0.2em] font-black text-black/30">Tech Matrix</h4>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t, i) => (
+                      <span key={i} className="px-5 py-2.5 border border-black/5 bg-zinc-50/50 rounded-full text-[9px] font-black tracking-[0.1em] uppercase text-black/40">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </section>
               </div>
             </div>
-
-            <div className="space-y-12">
-              <section>
-                <div className="flex items-center gap-2 mb-4">
-                  <Cpu size={18} className="text-accent" />
-                  <h4 className="text-xs uppercase tracking-widest font-black text-black/30">The Context</h4>
-                </div>
-                <p className="text-zinc-500 font-light leading-relaxed text-lg">
-                  {project.description}
-                </p>
-              </section>
-
-              <section>
-                <div className="flex items-center gap-2 mb-4">
-                  <Zap size={18} className="text-accent" />
-                  <h4 className="text-xs uppercase tracking-widest font-black text-black/30">The Challenge</h4>
-                </div>
-                <p className="text-zinc-500 font-light leading-relaxed text-lg italic">
-                  "{project.challenge}"
-                </p>
-              </section>
-
-              <section>
-                <div className="flex items-center gap-2 mb-6">
-                   <LayoutGrid size={18} className="text-accent" />
-                   <h4 className="text-xs uppercase tracking-widest font-black text-black/30">Selected Logic</h4>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {project.features.map((feature, i) => (
-                    <div key={i} className="p-5 border border-black/5 rounded-2xl bg-zinc-50/50 hover:bg-white transition-colors group">
-                       <p className="text-xs font-medium text-black/60 leading-snug">{feature}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              <section className="pb-8">
-                <div className="flex items-center gap-2 mb-6">
-                   <Lock size={18} className="text-accent" />
-                   <h4 className="text-xs uppercase tracking-widest font-black text-black/30">Protocol Stack</h4>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((t, i) => (
-                    <span key={i} className="px-5 py-2 glass-card border-black/5 text-[10px] font-bold tracking-widest uppercase text-black/40">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </section>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
+          </motion.div>
+        </div>
+      )}
     </AnimatePresence>
   );
 };
