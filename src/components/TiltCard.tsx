@@ -19,7 +19,7 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className }) => {
         const y = (e.clientY - top) / height - 0.5;
 
         gsap.to(cardRef.current, {
-            rotateY: x * 30, // Degrees of tilt
+            rotateY: x * 30,
             rotateX: -y * 30,
             transformPerspective: 1000,
             duration: 0.5,

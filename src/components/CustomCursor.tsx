@@ -13,7 +13,6 @@ const CustomCursor = () => {
         if (!cursor || !follower) return;
 
         const moveCursor = (e: MouseEvent) => {
-            // Small dot follows coordinates exactly
             gsap.to(cursor, {
                 x: e.clientX,
                 y: e.clientY,
@@ -21,7 +20,6 @@ const CustomCursor = () => {
                 ease: "power2.out",
             });
 
-            // Larger follower has a delay for that "soft" feel
             gsap.to(follower, {
                 x: e.clientX,
                 y: e.clientY,
@@ -32,7 +30,6 @@ const CustomCursor = () => {
 
         window.addEventListener("mousemove", moveCursor);
 
-        // Interaction states
         const handleLinkHover = () => {
             gsap.to(follower, {
                 scale: 3,

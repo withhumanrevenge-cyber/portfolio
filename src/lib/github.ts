@@ -21,6 +21,17 @@ const FALLBACK_COLORS = [
   "from-indigo-600/40 to-cyan-600/40"
 ];
 
+interface GitHubRepo {
+  id: number;
+  name: string;
+  fork: boolean;
+  topics?: string[];
+  homepage?: string;
+  html_url: string;
+  description?: string;
+  language?: string;
+}
+
 export async function fetchGitHubProjects(): Promise<Project[]> {
   try {
     const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=100`, {
@@ -29,15 +40,15 @@ export async function fetchGitHubProjects(): Promise<Project[]> {
 
     if (!res.ok) return [];
 
-    const repos = await res.json();
-    const filtered = repos.filter((r: any) => 
+    const repos: GitHubRepo[] = await res.json();
+    const filtered = repos.filter((r) => 
       !r.fork && 
       r.name.toLowerCase() !== 'portfolio' && 
       (r.topics?.includes('portfolio') || r.homepage)
     );
 
     const projects = await Promise.all(
-      filtered.map(async (repo: any) => {
+      filtered.map(async (repo: GitHubRepo): Promise<Project | null> => {
         let caseStudy: Partial<Project> = {};
         let hasScreenshot = false;
 
@@ -76,7 +87,7 @@ export async function fetchGitHubProjects(): Promise<Project[]> {
              "Type-safe Implementation",
              "Interaction Engineering"
           ],
-          tech: caseStudy.tech || (repo.topics?.length ? repo.topics : [repo.language].filter(Boolean)) || ["Core Stack"]
+          tech: (caseStudy.tech || (repo.topics?.length ? repo.topics : [repo.language].filter((l): l is string => !!l)) || ["Core Stack"]) as string[]
         };
       })
     );

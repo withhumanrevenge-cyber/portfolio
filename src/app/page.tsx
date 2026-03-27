@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, LayoutGrid, Camera, Film, Github, Linkedin, MessageCircle } from "lucide-react";
+import { ArrowRight, Play, LayoutGrid, Camera, Film, Github, Linkedin, MessageCircle, Rocket, Cpu } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import TiltCard from "@/components/TiltCard";
 import Footer from "@/components/Footer";
@@ -101,7 +101,7 @@ export default function Home() {
             transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
             className="text-[20vw] lg:text-[30vw] font-outfit font-black text-foreground/[0.03] dark:text-white/[0.02] whitespace-nowrap leading-none transition-opacity duration-1000"
           >
-            INTERACTIVE FRONTEND ENGINEERING
+            BUILDING WITH AI + MODERN TOOLS
           </motion.h2>
         </div>
         <nav className="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-50">
@@ -158,11 +158,19 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.8 }}
             >
               <h2 className="text-accent font-outfit text-xl mb-4 tracking-widest uppercase font-semibold">
-                Interactive Frontend Developer
+                Building Full-Stack Apps with AI + Modern Tools
               </h2>
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-outfit font-black leading-[0.9] tracking-tighter">
                 <span className="text-muted/20 hover:text-foreground transition-all duration-700 cursor-default">MONU</span>
               </h1>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="mt-6 text-sm md:text-base text-muted/60 font-light max-w-xl leading-relaxed italic border-l-2 border-accent/20 pl-6"
+              >
+                Built with AI. Shipped fast
+              </motion.p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -189,18 +197,21 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <h3 className="text-5xl font-outfit font-black mb-8 leading-tight">
-                Architecting <span className="text-accent italic">Digital</span> Resiliency.
+                I build things that <span className="text-accent italic">actually</span> work.
               </h3>
               <div className="space-y-6 text-lg text-muted font-light leading-relaxed">
                 <p>
-                  As an <span className="text-foreground font-semibold">Interactive Frontend Engineer</span>, I specialize in bridging high-fidelity design with scalable, high-performance logic. My architecture focuses on the intersection of motion engineering and technical density.
+                  I take ideas and turn them into <span className="text-foreground font-semibold">real, functional applications</span> — with authentication, databases, and third-party APIs. I use modern tools (<span className="text-foreground font-semibold">Next.js, TypeScript, Supabase</span>) and AI to ship fast.
                 </p>
                 <p>
-                  I leverage the <span className="text-foreground font-semibold">React ecosystem</span>, utilizing <span className="text-foreground font-semibold">Next.js</span> for optimized delivery, <span className="text-foreground font-semibold">TypeScript</span> for structural safety, and <span className="text-foreground font-semibold">GSAP/Framer Motion</span> for physics-based storytelling.
+                  My portfolio <span className="text-accent font-semibold italic underline decoration-accent/30 underline-offset-4">automatically updates from GitHub</span>. Every project here is real, deployed, and working.
                 </p>
-                <p>
-                  Every implementation is driven by performance benchmarks and interaction benchmarks. I'm dedicated to pushing the technical boundaries of what can be rendered and interacted with in a modern browser environment.
-                </p>
+                <div className="pt-4 border-l-4 border-accent/20 pl-6 py-2 bg-accent/5 rounded-r-lg">
+                  <p className="text-sm font-medium text-foreground/80 uppercase tracking-widest mb-2">Recent Build</p>
+                  <p className="text-base text-foreground/70 italic">
+                    <span className="text-foreground font-semibold not-italic">PulseBoard</span> — a full-stack SaaS that connects to GitHub API, handles auth with Clerk, and stores data in Supabase. <span className="text-accent font-bold">Built in 6 hours.</span>
+                  </p>
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-8 mt-12">
@@ -257,6 +268,63 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="build" className="max-w-7xl mx-auto mb-60 px-4 sm:px-0">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+            <div>
+              <h3 className="text-accent text-sm font-black uppercase tracking-[0.3em] mb-4">Workflow</h3>
+              <h2 className="text-5xl md:text-7xl font-outfit font-black tracking-tighter uppercase leading-[0.9]">
+                How I <span className="text-accent italic">Build</span>.
+              </h2>
+            </div>
+            <p className="text-muted max-w-sm text-lg font-light italic border-l-2 border-accent/20 pl-6 py-2">
+              From zero to production in hours. Leveraging AI and the modern stack for radical efficiency.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Strategy / Architecture",
+                desc: "Defined by utility. I outline the core database schema (Supabase), auth flow (Clerk), and API protocols before any code is generated.",
+                icon: "Cpu"
+              },
+              {
+                step: "02",
+                title: "AI-Augmented Forge",
+                desc: "Parallel generation of high-fidelity frontend and performant serverless logic. I guide the AI, focusing on the refined UX and edge-case resilience.",
+                icon: "Zap"
+              },
+              {
+                step: "03",
+                title: "CI/CD Deployment",
+                desc: "RAD (Rapid Application Development) mindset. Instant deployment to Vercel with automatic GitHub sync. Built for scale and ready to be used today.",
+                icon: "Rocket"
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2, duration: 0.8 }}
+                viewport={{ once: true }}
+                className="group relative glass-card p-10 border-glass-border hover:border-accent transition-all duration-500"
+              >
+                <div className="absolute top-0 right-0 p-6 text-6xl font-outfit font-black text-foreground/[0.03] group-hover:text-accent/10 transition-colors pointer-events-none">
+                  {item.step}
+                </div>
+                <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-8 text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-xl shadow-accent/5">
+                  {item.icon === "Cpu" && <Cpu size={24} />}
+                  {item.icon === "Zap" && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-zap"><path d="M4 14.5a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5h1.5l1.5-6.5a1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5L9 11.5h1.5a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5h-1.5l-1.5 6.5a1.5 1.5 0 0 1-1.5 1.5 1.5 1.5 0 0 1-1.5-1.5L13 14.5z"/></svg>}
+                  {item.icon === "Rocket" && <Rocket size={24} />}
+                </div>
+                <h4 className="text-2xl font-bold mb-4 tracking-tighter">{item.title}</h4>
+                <p className="text-muted text-sm leading-relaxed font-light">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 
@@ -378,37 +446,6 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <div className="fixed top-32 right-6 md:right-20 flex flex-col gap-4 glass-card p-6 border-white/5 backdrop-blur-xl z-40 group hover:border-accent/40 transition-all duration-500">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 rounded-full bg-accent animate-[pulse_2s_infinite] shadow-[0_0_15px_rgba(var(--accent-rgb),0.5)]" />
-            <div className="text-[10px] tracking-[0.3em] uppercase font-bold text-foreground/40">Capability Matrix</div>
-          </div>
-          {[
-            { label: "REACT", width: 95 },
-            { label: "NEXT.JS", width: 90 },
-            { label: "TYPESCRIPT", width: 85 }
-          ].map((skill, i) => (
-            <div key={i} className="flex flex-col gap-1.5">
-              <div className="flex justify-between items-center text-[9px] font-mono tracking-tighter">
-                <span className="text-foreground/30">0{i + 1}_{skill.label}</span>
-                <span className="text-accent/60">{skill.width}%</span>
-              </div>
-              <div className="w-32 md:w-48 h-[2px] bg-foreground/5 overflow-hidden rounded-full">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.width}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, delay: 0.5 + (i * 0.2), ease: "circOut" }}
-                  className="h-full bg-accent shadow-[0_0_10px_rgba(var(--accent-rgb),0.3)]"
-                />
-              </div>
-            </div>
-          ))}
-          <div className="mt-2 pt-2 border-t border-foreground/5 flex justify-between items-center">
-             <div className="text-[8px] font-mono text-foreground/20 uppercase tracking-widest">System Status</div>
-             <div className="text-[8px] font-mono text-accent uppercase animate-pulse">Optimal</div>
-          </div>
-        </div>
       </main>
       <Footer />
       <ProjectModal 

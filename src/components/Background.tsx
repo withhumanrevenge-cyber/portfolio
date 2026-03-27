@@ -9,7 +9,6 @@ const Background = () => {
     useEffect(() => {
         if (!containerRef.current) return;
 
-        // Subtle breathing animation for the background
         gsap.to(containerRef.current, {
             opacity: 0.6,
             duration: 5,
@@ -18,7 +17,6 @@ const Background = () => {
             ease: "sine.inOut",
         });
 
-        // Animate the rotation of a subtle mesh
         gsap.to(".mesh-circle", {
             rotation: 360,
             duration: 200,

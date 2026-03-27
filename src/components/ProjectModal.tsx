@@ -37,7 +37,6 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             onClick={onClose}
           />
 
-          {/* The layoutId expansion will handle the "pop-up on the project" feel */}
           <motion.div
             layoutId={`card-${project.id}`}
             className="relative w-full max-w-2xl bg-white border border-black/5 rounded-[40px] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col pointer-events-auto z-[101] my-auto"

@@ -43,7 +43,6 @@
 
 @layer components {
 
-  /* Custom Cursor Styles */
   .custom-cursor {
     width: 20px;
     height: 20px;
@@ -56,7 +55,6 @@
     transition: transform 0.15s ease-out;
   }
 
-  /* Mesh Gradient Background */
   .mesh-gradient {
     position: absolute;
     top: 0;
@@ -71,7 +69,6 @@
     opacity: 0.4;
   }
 
-  /* Glass Card */
   .glass-card {
     background: var(--glass);
     backdrop-filter: blur(12px);
@@ -88,7 +85,6 @@
     box-shadow: 0 10px 30px -10px var(--accent-glow);
   }
 
-  /* Animatic Text Reveal */
   .text-reveal {
     overflow: hidden;
   }
@@ -98,7 +94,6 @@
   }
 }
 
-/* Premium Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -117,7 +112,6 @@
   background: var(--accent);
 }
 
-/* Base Utility for full-screen fixed backgrounds */
 .fixed-bg {
   position: fixed;
   inset: 0;

@@ -19,9 +19,9 @@ const headlineFont = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Monu | Portfolio",
-  description: "Personal portfolio of Monu, an Interactive Frontend Developer and UI Engineer specializing in high-performance web experiences.",
-  keywords: ["Frontend Developer", "React Developer", "Next.js", "UI Engineer", "Web Animations", "GSAP", "Three.js", "Portfolio"],
+  title: "Monu | Full-Stack AI Engineer",
+  description: "Personal portfolio of Monu, Building Full-Stack Apps with AI + Modern Tools. Specializing in high-performance web experiences.",
+  keywords: ["AI Engineer", "Full-Stack Developer", "Next.js", "Supabase", "UI Engineer", "Web Animations", "GSAP", "Three.js", "Portfolio"],
 };
 
 export default function RootLayout({

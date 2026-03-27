@@ -15,8 +15,8 @@ const Footer = () => {
                     <div className="text-2xl font-outfit font-black tracking-tighter mb-4">
                         MY <span className="text-accent italic">PORTFOLIO</span>
                     </div>
-                    <p className="text-foreground/70 max-w-sm mb-8 font-light">
-                        Focused on high-fidelity interfaces and performance-first logic. 
+                    <p className="text-foreground/70 max-w-sm mb-8 font-light leading-relaxed">
+                        Focused on high-fidelity interfaces and performance-first logic.
                         Engineering the React ecosystem with a focus on motion and scalability.
                     </p>
                 </div>
