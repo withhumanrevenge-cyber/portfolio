@@ -9,7 +9,7 @@ import {
   useTransform,
 } from "framer-motion"
 import { Project } from "@/lib/github"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Github, X } from "lucide-react"
 
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect
@@ -196,13 +196,20 @@ function ThreeDPhotoCarousel({ projects }: { projects: Project[] }) {
             transition={transitionOverlay}
           >
             <div 
-              className="relative w-full max-w-5xl aspect-video bg-card rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row"
+              className="relative w-full max-w-5xl bg-card rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row min-h-[500px]"
               onClick={(e) => e.stopPropagation()}
             >
+              <button 
+                onClick={handleClose}
+                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors shadow-xl border border-border/50"
+              >
+                <X size={20} />
+              </button>
+
               <motion.img
                 layoutId={`img-${activeProject.id}`}
                 src={activeProject.image}
-                className="w-full md:w-2/3 h-64 md:h-full object-cover"
+                className="w-full md:w-3/5 h-64 md:h-auto object-cover"
                 initial={{ scale: 0.95 }}
                 animate={{ scale: 1 }}
                 transition={{
@@ -214,7 +221,7 @@ function ThreeDPhotoCarousel({ projects }: { projects: Project[] }) {
                   willChange: "transform",
                 }}
               />
-              <div className="w-full md:w-1/3 p-8 md:p-12 flex flex-col justify-between">
+              <div className="w-full md:w-2/5 p-6 md:p-10 flex flex-col justify-between">
                 <div>
                   <span className="text-primary font-bold text-xs tracking-widest uppercase mb-4 block">
                     {activeProject.category}
@@ -222,28 +229,40 @@ function ThreeDPhotoCarousel({ projects }: { projects: Project[] }) {
                   <h2 className="text-3xl md:text-4xl font-black mb-4 text-foreground">
                     {activeProject.title}
                   </h2>
-                  <p className="text-muted-foreground mb-6 line-clamp-4">
+                  <p className="text-muted-foreground mb-6 text-sm md:text-base leading-relaxed">
                     {activeProject.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-8">
                     {activeProject.tech?.map(tech => (
-                      <span key={tech} className="text-[10px] font-bold uppercase tracking-wider bg-secondary text-secondary-foreground px-3 py-1 rounded-full">
+                      <span key={tech} className="text-[10px] font-bold uppercase tracking-wider bg-secondary/50 text-secondary-foreground px-3 py-1 rounded-full border border-border/20">
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
                 
-                <div className="flex gap-4">
+                <div className="flex flex-col xl:flex-row gap-3 mt-auto">
                   <a 
                     href={activeProject.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold hover:opacity-90 transition-opacity"
+                    className="flex-1 group/btn relative flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-xl font-bold whitespace-nowrap overflow-hidden transition-all hover:opacity-90 shadow-lg shadow-primary/20 text-sm"
                   >
-                    View Project <ArrowRight size={16} />
+                    <span>View Project</span>
+                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                   </a>
+                  {activeProject.github && (
+                    <a 
+                      href={activeProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 bg-secondary text-secondary-foreground px-4 py-3 rounded-xl font-bold whitespace-nowrap transition-all hover:bg-secondary/80 border border-border/50 text-sm"
+                    >
+                      <Github size={16} />
+                      <span>Repository</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
