@@ -6,16 +6,16 @@ import { Zap, Star, Rocket } from "lucide-react";
 
 const built = [
   {
-    title: "PulseBoard",
-    description: "Full-stack SaaS shipped in 6 hours (GitHub, Clerk, Supabase)",
+    title: "AI Product Engineering",
+    description: "Designing intelligent workflows and interactive product experiences",
   },
   {
-    title: "Auto-updating Portfolio",
-    description: "Syncs projects directly from GitHub activity",
+    title: "System Architecture",
+    description: "Building clean, scalable software foundations for real-world use",
   },
   {
-    title: "Enterprise Redesigns",
-    description: "Motion-heavy interfaces with GSAP and Three.js",
+    title: "Experience Design",
+    description: "Combining performance, usability, and polished product thinking",
   },
 ];
 
@@ -41,21 +41,19 @@ export default function AboutSection() {
           </h2>
           <div className="space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              I take ideas and turn them into real, working products. Not in
-              weeks —{" "}
-              <span className="font-bold text-foreground">in hours</span>.
+              I turn ideas into real, working products with a strong balance of
+              product thinking, engineering discipline, and design clarity.
             </p>
             <p>
-              I specialize in{" "}
+              My focus is on{" "}
               <span className="font-semibold text-primary">
-                RAG Applications, Agents, and AI-powered solutions
+                AI systems, RAG applications, agent workflows, and polished digital products
               </span>
-              . I build experiences that feel good to use with smooth animations,
-              responsive layouts, clean code.
+              . I build experiences that are not only technically capable, but also intuitive, performant, and easy to trust.
             </p>
             <p className="flex items-center gap-2 border-t border-border pt-4 text-sm italic">
               <Rocket size={16} className="shrink-0 text-primary" aria-hidden="true" />
-              Looking for roles in AI Engineering.
+              Open to AI engineering, product engineering, and software design opportunities.
             </p>
           </div>
         </motion.div>

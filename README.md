@@ -8,7 +8,7 @@ This portfolio is a live reflection of my work: projects, experiments, and produ
 I’m an AI engineer focused on building practical, high-impact software at the intersection of:
 
 - Large language models and agentic workflows
-- Full-stack product engineering
+- AI product engineering
 - Human-centered design and experience architecture
 - Scalable, production-ready application systems
 
@@ -23,7 +23,7 @@ My work is driven by one goal: building tools that feel intelligent, reliable, a
 - Model integrations and API orchestration
 - Agentic tools for real-world tasks
 
-### Full-Stack Product Engineering
+### AI Product Engineering
 - Next.js applications with modern frontend architecture
 - Data-driven dashboards and interactive product interfaces
 - APIs and backend services for AI-powered features

@@ -64,36 +64,33 @@ export default function Hero() {
           {...fadeUp(0.2)}
           className="mb-6 max-w-4xl font-heading text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
         >
-          I turn ideas into working products —{" "}
-          <span className="text-primary">in a week.</span>
+          I build AI products and experiences that feel as sharp as they are useful.
         </motion.h1>
 
         <motion.p
           {...fadeUp(0.3)}
           className="mb-10 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
         >
-          Specializing in devloping high performing RAG Applications and Agents with Langchain,
-          LLMs, and Vector Databases. I build production-ready software with modern
-          tooling, focusing on performance, accessibility, and user experience.
+          I design and ship production-ready AI systems, RAG applications, and agentic workflows using modern tooling, clean architecture, and thoughtful user experience.
         </motion.p>
 
         <motion.div {...fadeUp(0.4)} className="mb-14 flex flex-wrap gap-4">
           <a
             href="#work"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-primary-foreground transition-opacity duration-200 hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
           >
-            See my work
+            View projects
             <ArrowRight size={16} aria-hidden="true" />
           </a>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3 text-sm font-bold transition-colors duration-200 hover:border-primary/50 hover:text-primary"
           >
-            Get in touch
+            Contact me
             <ArrowDown size={16} aria-hidden="true" />
           </a>
           <a
-            href="/monu_resume(2).pdf"
+            href="/monu_resume_v2.pdf"
             download
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3 text-sm font-bold transition-colors duration-200 hover:border-primary/50 hover:text-primary"
           >

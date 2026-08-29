@@ -51,12 +51,10 @@ export default function ContactSection() {
           Contact
         </p>
         <h2 className="relative mx-auto mb-8 max-w-3xl font-heading text-4xl font-black tracking-tight md:text-6xl">
-          Let&apos;s build something{" "}
-          <span className="text-primary">meaningful</span>.
+          Let&apos;s build the next intelligent product.
         </h2>
         <p className="relative mx-auto mb-10 max-w-xl text-muted-foreground">
-          Available for new opportunities and collaborations. Reach out and
-          I&apos;ll get back to you within a day.
+          Available for AI engineering, product engineering, and product design collaborations. I&apos;d be happy to hear about your idea, your team, or your next challenge.
         </p>
         <div className="relative mb-10">
           <a

@@ -8,19 +8,19 @@ const steps = [
   {
     title: "Strategy",
     description:
-      "Defining schema, auth flow and architecture decisions before a single line of code.",
+      "Clarifying the product goal, system architecture, and user value before building anything that ships.",
     Icon: Compass,
   },
   {
-    title: "Forge",
+    title: "Build",
     description:
-      "High-fidelity implementation at speed. Boilerplate moves fast so the important decisions get the time they deserve.",
+      "Rapid implementation with strong engineering fundamentals, clean code, and thoughtful execution under real constraints.",
     Icon: Zap,
   },
   {
-    title: "Scale",
+    title: "Ship",
     description:
-      "Instant deployment with CI/CD sync, edge-optimized delivery and Core Web Vitals in the green.",
+      "Deploying with performance, reliability, and product polish in mind so the solution is ready for real users.",
     Icon: Rocket,
   },
 ];

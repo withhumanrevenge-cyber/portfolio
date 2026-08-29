@@ -287,7 +287,7 @@ export default function Scene({
 
       <StoryPanel position={[0, 0.2, journey.heroZ]} width={620}>
         <p className="mb-3 text-xs font-bold uppercase tracking-[0.4em] text-primary">
-          Full-Stack Engineer
+          AI Engineer
         </p>
         <h1 className="mb-4 font-heading text-8xl font-black tracking-tight text-foreground">
           MONU
@@ -307,7 +307,7 @@ export default function Scene({
         </h2>
         <p className="text-sm leading-relaxed text-muted-foreground">
           I catch them and give them gravity. I&apos;m Monu — I turn ideas into
-          real, working products. Not in weeks. In hours.
+          real, working products.
         </p>
       </StoryPanel>
 
@@ -369,7 +369,7 @@ export default function Scene({
           hours, not weeks — without cutting the corners that matter.&rdquo;
         </h2>
         <p className="text-sm text-muted-foreground">
-          React · Next.js · TypeScript — experiences that feel good to use.
+          React · Next.js · TypeScript · Python — experiences that feel good to use.
         </p>
       </StoryPanel>
 
@@ -389,7 +389,7 @@ export default function Scene({
             href="mailto:monuraj88703@gmail.com"
             className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-opacity duration-200 hover:opacity-90"
           >
-            monuraj88703@gmail.com
+            monu.dev01work@gmail.com
           </a>
           <a
             href="https://github.com/withhumanrevenge-cyber"

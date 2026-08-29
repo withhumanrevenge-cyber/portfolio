@@ -44,7 +44,7 @@ export default function Overlay({
             <Linkedin size={17} />
           </a>
           <a
-            href="/monu_resume.pdf"
+            href="/monu_resume_v2.pdf"
             download
             aria-label="Download resume"
             className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-full border border-border bg-card/60 px-4 text-xs font-bold text-muted-foreground backdrop-blur-sm transition-colors duration-200 hover:text-primary"
