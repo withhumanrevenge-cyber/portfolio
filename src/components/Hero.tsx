@@ -5,12 +5,20 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowDown, FileDown } from "lucide-react";
 
 const stack = [
+  "Langchain",
+  "LangGraph",
+  "Hugging Face",
+  "OpenAI",
+  "Claude",
+  "Auth",
+  "Langsmith",
+  "LLMs",
+  "Vector Databases",
+  "Python",
+  "TypeScript",
   "Next.js",
   "React",
-  "TypeScript",
-  "Tailwind",
-  "Supabase",
-  "Framer Motion",
+  "Tailwind CSS",
 ];
 
 export default function Hero() {
@@ -49,7 +57,7 @@ export default function Hero() {
           {...fadeUp(0.1)}
           className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-primary"
         >
-          Monu · Full-Stack Engineer
+          Monu · AI Engineer
         </motion.p>
 
         <motion.h1
@@ -57,16 +65,16 @@ export default function Hero() {
           className="mb-6 max-w-4xl font-heading text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
         >
           I turn ideas into working products —{" "}
-          <span className="text-primary">in hours, not weeks.</span>
+          <span className="text-primary">in a week.</span>
         </motion.h1>
 
         <motion.p
           {...fadeUp(0.3)}
           className="mb-10 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
         >
-          Specializing in high-performance web architectures with React,
-          Next.js and TypeScript. Shipping production-ready software in hours,
-          not weeks.
+          Specializing in devloping high performing RAG Applications and Agents with Langchain,
+          LLMs, and Vector Databases. I build production-ready software with modern
+          tooling, focusing on performance, accessibility, and user experience.
         </motion.p>
 
         <motion.div {...fadeUp(0.4)} className="mb-14 flex flex-wrap gap-4">
@@ -85,7 +93,7 @@ export default function Hero() {
             <ArrowDown size={16} aria-hidden="true" />
           </a>
           <a
-            href="/monu_resume.pdf"
+            href="/monu_resume(2).pdf"
             download
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3 text-sm font-bold transition-colors duration-200 hover:border-primary/50 hover:text-primary"
           >

@@ -23,7 +23,7 @@ export default function Footer() {
             MONU<span className="text-primary">.</span>
           </p>
           <p className="text-sm text-muted-foreground">
-            © 2026 Monu — Full-Stack Engineer
+            © 2026 Monu — AI Engineer
           </p>
         </div>
 

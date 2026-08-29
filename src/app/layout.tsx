@@ -15,21 +15,20 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Monu | Full-Stack Engineer",
+  title: "Monu | AI Engineer",
   description:
-    "Portfolio of Monu — building full-stack products with modern tooling. High-performance web experiences with React, Next.js and TypeScript.",
+    "Portfolio of Monu — building AI-powered solutions with modern tooling. High-performance web experiences with React, Next.js and TypeScript.",
   keywords: [
-    "Full-Stack Developer",
-    "Frontend Engineer",
+    "AI Engineer",
     "Next.js",
     "React",
     "TypeScript",
     "Portfolio",
   ],
   openGraph: {
-    title: "Monu | Full-Stack Engineer",
+    title: "Monu | AI Engineer",
     description:
-      "Building full-stack products with modern tooling. Shipping production-ready software in hours, not weeks.",
+      "Building AI-powered solutions with modern tooling. Shipping production-ready software.",
     type: "website",
   },
 };

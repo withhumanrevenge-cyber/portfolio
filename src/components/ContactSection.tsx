@@ -7,7 +7,7 @@ import { Mail, Github, Linkedin, MessageCircle } from "lucide-react";
 const socials = [
   {
     label: "Email me",
-    href: "mailto:monuraj88703@gmail.com",
+    href: "mailto:monu.dev01work@gmail.com",
     Icon: Mail,
     external: false,
   },
@@ -60,11 +60,11 @@ export default function ContactSection() {
         </p>
         <div className="relative mb-10">
           <a
-            href="mailto:monuraj88703@gmail.com"
+            href="mailto:monu.dev01work@gmail.com"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-opacity duration-200 hover:opacity-90"
           >
             <Mail size={16} aria-hidden="true" />
-            monuraj88703@gmail.com
+            monu.dev01work@gmail.com
           </a>
         </div>
         <ul className="relative flex justify-center gap-3">

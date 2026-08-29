@@ -48,14 +48,14 @@ export default function AboutSection() {
             <p>
               I specialize in{" "}
               <span className="font-semibold text-primary">
-                React, Next.js and TypeScript
+                RAG Applications, Agents, and AI-powered solutions
               </span>
-              . I build experiences that feel good to use — smooth animations,
+              . I build experiences that feel good to use with smooth animations,
               responsive layouts, clean code.
             </p>
             <p className="flex items-center gap-2 border-t border-border pt-4 text-sm italic">
               <Rocket size={16} className="shrink-0 text-primary" aria-hidden="true" />
-              Looking for roles in Frontend and Full-Stack Engineering.
+              Looking for roles in AI Engineering.
             </p>
           </div>
         </motion.div>
@@ -63,7 +63,7 @@ export default function AboutSection() {
         <motion.div {...reveal} className="space-y-6">
           <div className="rounded-2xl border border-border bg-card p-6">
             <h3 className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary">
-              <Zap size={15} aria-hidden="true" /> My Philosophy
+              <Zap size={15} aria-hidden="true" /> My WorkFLow
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
               I focus on architecture, decisions and product outcomes. The
